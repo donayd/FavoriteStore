@@ -2,19 +2,17 @@
 
 <p align="center">
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-green.svg?style=flat"/></a>
-  <a href="https://www.java.com/"><img alt="Android" src="https://img.shields.io/badge/Android-Java-orange.svg?style=flat"/></a>
+  <a href="https://kotlinlang.org/"><img alt="Android" src="https://img.shields.io/badge/Android-Kotlin-purple.svg?style=flat"/></a>
   <a href="https://github.com/donayd"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Donayd-blue.svg?style=flat"/></a> 
 </p>
 
 **FavoriteStore** es una aplicación Android moderna desarrollada en Kotlin que utiliza la [FakeStoreAPI](https://fakestoreapi.com) para mostrar productos y gestionar una lista de favoritos persistente. La app sigue los principios de **Clean Architecture** y las mejores prácticas de desarrollo recomendadas por Google.
 
-<table align="right">
-  <tr>
-    <td style="padding: 20px;">
-      <img src="/preview/preview.gif" width="320" alt="App Preview"/>
-    </td>
-  </tr>
-</table>
+<table border="0">
+<tr>
+<td style="border: none;">
+
+<img src="./preview/preview.gif" align="right" width="320" style="margin: 0 0 20px 20px; border-radius: 20px;" />
 
 ## 🚀 Características
 
@@ -39,6 +37,10 @@
 - **Testing**:
   - Unit Tests: MockK, Coroutines Test, Turbine.
   - Instrumentation Tests: Room In-Memory testing.
+
+</td>
+</tr>
+</table>
 
 ## 📐 Arquitectura
 
