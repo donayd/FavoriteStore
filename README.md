@@ -8,9 +8,13 @@
 
 **FavoriteStore** es una aplicación Android moderna desarrollada en Kotlin que utiliza la [FakeStoreAPI](https://fakestoreapi.com) para mostrar productos y gestionar una lista de favoritos persistente. La app sigue los principios de **Clean Architecture** y las mejores prácticas de desarrollo recomendadas por Google.
 
-<div style="float:left;margin:0px 12px 0 12px">
-    <img src="/preview/preview.gif" align="right" width="320"/>
-</div>
+<table align="right">
+  <tr>
+    <td style="padding: 20px;">
+      <img src="/preview/preview.gif" width="320" alt="App Preview"/>
+    </td>
+  </tr>
+</table>
 
 ## 🚀 Características
 
