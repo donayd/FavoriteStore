@@ -2,54 +2,58 @@
 
 <p align="center">
   <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-green.svg?style=flat"/></a>
-  <a href="https://kotlinlang.org/"><img alt="Android" src="https://img.shields.io/badge/Android-Kotlin-purple.svg?style=flat"/></a>
+  <a href="https://kotlinlang.org/"><img alt="Android" src="https://img.shields.io/badge/Android-Kotlin-purple.svg?style=flat&logo=kotlin"/></a>
   <a href="https://github.com/donayd"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Donayd-blue.svg?style=flat"/></a> 
 </p>
 
 **FavoriteStore** es una aplicación Android moderna desarrollada en Kotlin que utiliza la [FakeStoreAPI](https://fakestoreapi.com) para mostrar productos y gestionar una lista de favoritos persistente. La app sigue los principios de **Clean Architecture** y las mejores prácticas de desarrollo recomendadas por Google.
 
+<br/>
+
 <table border="0">
-<tr>
-<td style="border: none;">
-
-<img src="./preview/preview.gif" align="right" width="320" style="margin: 0 0 20px 20px; border-radius: 20px;" />
-
-## 🚀 Características
-
-- **Listado de Productos**: Visualización de productos en un grid moderno con carga asíncrona de imágenes.
-- **Detalle de Producto**: Información detallada de cada artículo, incluyendo descripción, precio y categoría.
-- **Gestión de Favoritos**: Marcar/desmarcar productos como favoritos con persistencia local.
-- **Perfil de Usuario**: Información del perfil obtenida de la API y estadísticas de favoritos.
-- **Interfaz Adaptativa**: Soporte para diferentes tamaños de pantalla mediante `NavigationSuiteScaffold`.
-- **Modo Offline**: Los productos marcados como favoritos se guardan localmente y están disponibles sin conexión.
-- **Animaciones**: Transiciones fluidas entre pestañas y estados de carga.
-
-## 🛠️ Stack Tecnológico
-
-- **Lenguaje**: [Kotlin](https://kotlinlang.org/)
-- **UI**: [Jetpack Compose](https://developer.android.com/jetpack/compose) con Material 3.
-- **Arquitectura**: MVVM (Model-View-ViewModel) + Clean Architecture.
-- **Inyección de Dependencias**: [Hilt](https://developer.android.com/training/dependency-injection/hilt-android).
-- **Red**: [Retrofit](https://square.github.io/retrofit/) + Gson para el consumo de la API REST.
-- **Persistencia**: [Room Database](https://developer.android.com/training/data-storage/room) para la base de datos local.
-- **Imágenes**: [Coil](https://coil-kt.github.io/coil/) para la carga eficiente de imágenes.
-- **Navegación**: Navigation Compose con animaciones personalizadas.
-- **Testing**:
-  - Unit Tests: MockK, Coroutines Test, Turbine.
-  - Instrumentation Tests: Room In-Memory testing.
-
-</td>
-</tr>
+  <tr>
+    <td valign="top" style="border: none;">
+      <br/>
+      <img src="https://raw.githubusercontent.com/TarikSouto/TarikSouto/main/rocket.gif" width="20" /> <b><font size="5">Características</font></b>
+      <br/><br/>
+      <ul>
+        <li><b>Listado de Productos</b>: Visualización en grid moderno con carga asíncrona de imágenes.</li>
+        <li><b>Detalle de Producto</b>: Información detallada de cada artículo, precio y categoría.</li>
+        <li><b>Gestión de Favoritos</b>: Marcar/desmarcar con persistencia local en Room.</li>
+        <li><b>Perfil de Usuario</b>: Información obtenida de la API y estadísticas de favoritos.</li>
+        <li><b>Interfaz Adaptativa</b>: Soporte para pantallas mediante <code>NavigationSuiteScaffold</code>.</li>
+        <li><b>Modo Offline</b>: Los favoritos están disponibles sin conexión.</li>
+        <li><b>Animaciones</b>: Transiciones fluidas entre pestañas y estados de carga.</li>
+      </ul>
+      <br/>
+      <img src="https://raw.githubusercontent.com/TarikSouto/TarikSouto/main/gear.gif" width="20" /> <b><font size="5">Stack Tecnológico</font></b>
+      <br/><br/>
+      <ul>
+        <li><b>Lenguaje</b>: Kotlin con Coroutines y Flow.</li>
+        <li><b>UI</b>: Jetpack Compose con Material 3.</li>
+        <li><b>Arquitectura</b>: MVVM + Clean Architecture.</li>
+        <li><b>Inyección de Dependencias</b>: Hilt.</li>
+        <li><b>Red / Persistencia</b>: Retrofit + Room Database.</li>
+        <li><b>Imágenes</b>: Coil para carga eficiente.</li>
+        <li><b>Testing</b>: MockK, Turbine e Instrumentation tests.</li>
+      </ul>
+      <br/>
+      <img src="https://raw.githubusercontent.com/TarikSouto/TarikSouto/main/computer.gif" width="20" /> <b><font size="5">Arquitectura</font></b>
+      <br/><br/>
+      <ul>
+        <li><b>Data</b>: Implementación de repositorios, Retrofit (Remote) y Room (Local).</li>
+        <li><b>Domain</b>: Modelos de negocio y lógica pura (independiente de Android).</li>
+        <li><b>Presentation</b>: ViewModels y pantallas de Compose por funcionalidades.</li>
+      </ul>
+    </td>
+    <td valign="top" style="border: none; min-width: 330px;">
+      <br/><br/>
+      <img src="./preview/preview.gif" width="320" style="border-radius: 20px; box-shadow: 0px 4px 15px rgba(0,0,0,0.5);" />
+    </td>
+  </tr>
 </table>
 
-## 📐 Arquitectura
-
-El proyecto está modularizado lógicamente en tres capas:
-
-1.  **Data**: Implementación de repositorios, fuentes de datos remotas (Retrofit) y locales (Room).
-2.  **Domain**: Modelos de negocio e interfaces de repositorios (independiente de librerías de Android).
-3.  **Presentation**: ViewModels y pantallas de Compose organizadas por funcionalidades.
-
+<br/>
 
 ---
 Desarrollado por **Donayd Correa Marrugo**.
