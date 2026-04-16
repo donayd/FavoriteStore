@@ -7,6 +7,8 @@ import com.dreammkr.favoritestore.domain.model.Product
 import com.dreammkr.favoritestore.domain.repository.ProductRepository
 import com.dreammkr.favoritestore.domain.repository.User
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
@@ -15,11 +17,17 @@ class ProductRepositoryImpl @Inject constructor(
     private val productDao: ProductDao
 ) : ProductRepository {
 
-    override suspend fun getProducts(): Result<List<Product>> {
-        return try {
+    override fun getProducts(): Flow<Result<List<Product>>> = flow {
+        try {
             val remoteProducts = apiService.getProducts()
-            val products = remoteProducts.map { dto ->
-                val isFav = productDao.isFavorite(dto.id)
+            emit(Result.success(remoteProducts))
+        } catch (e: Exception) {
+            emit(Result.failure(e))
+        }
+    }.combine(productDao.getFavoriteIds()) { result, favoriteIds ->
+        val favoriteSet = favoriteIds.toSet()
+        result.map { dtos ->
+            dtos.map { dto ->
                 Product(
                     id = dto.id,
                     title = dto.title,
@@ -27,12 +35,9 @@ class ProductRepositoryImpl @Inject constructor(
                     description = dto.description,
                     category = dto.category,
                     image = dto.image,
-                    isFavorite = isFav
+                    isFavorite = favoriteSet.contains(dto.id)
                 )
             }
-            Result.success(products)
-        } catch (e: Exception) {
-            Result.failure(e)
         }
     }
 
@@ -42,11 +47,16 @@ class ProductRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun toggleFavorite(product: Product) {
-        if (product.isFavorite) {
-            productDao.deleteProduct(product.toEntity())
-        } else {
-            productDao.insertProduct(product.toEntity().copy(isFavorite = true))
+    override suspend fun toggleFavorite(product: Product): Result<Unit> {
+        return try {
+            if (product.isFavorite) {
+                productDao.deleteProduct(product.toEntity())
+            } else {
+                productDao.insertProduct(product.toEntity().copy(isFavorite = true))
+            }
+            Result.success(Unit)
+        } catch (e: Exception) {
+            Result.failure(e)
         }
     }
 

@@ -4,9 +4,9 @@ import com.dreammkr.favoritestore.domain.model.Product
 import kotlinx.coroutines.flow.Flow
 
 interface ProductRepository {
-    suspend fun getProducts(): Result<List<Product>>
+    fun getProducts(): Flow<Result<List<Product>>>
     fun getFavoriteProducts(): Flow<List<Product>>
-    suspend fun toggleFavorite(product: Product)
+    suspend fun toggleFavorite(product: Product): Result<Unit>
     suspend fun getProductById(id: Int): Result<Product>
     suspend fun getUserProfile(): Result<User>
 }

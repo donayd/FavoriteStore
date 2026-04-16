@@ -2,8 +2,9 @@ package com.dreammkr.favoritestore.presentation.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dreammkr.favoritestore.domain.repository.ProductRepository
 import com.dreammkr.favoritestore.domain.repository.User
+import com.dreammkr.favoritestore.domain.use_case.GetFavoriteProductsUseCase
+import com.dreammkr.favoritestore.domain.use_case.GetUserProfileUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,12 +15,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
-    private val repository: ProductRepository
+    private val getUserProfileUseCase: GetUserProfileUseCase,
+    private val getFavoriteProductsUseCase: GetFavoriteProductsUseCase
 ) : ViewModel() {
 
     private val _userState = MutableStateFlow<UserState>(UserState.Loading)
-    
-    private val _favoriteCount = repository.getFavoriteProducts()
+
+    private val _favoriteCount = getFavoriteProductsUseCase()
 
     private val _state = MutableStateFlow<ProfileState>(ProfileState.Loading)
     val state: StateFlow<ProfileState> = _state.asStateFlow()
@@ -42,7 +44,7 @@ class ProfileViewModel @Inject constructor(
     private fun loadProfile() {
         viewModelScope.launch {
             _userState.value = UserState.Loading
-            repository.getUserProfile()
+            getUserProfileUseCase()
                 .onSuccess { user ->
                     _userState.value = UserState.Success(user)
                 }

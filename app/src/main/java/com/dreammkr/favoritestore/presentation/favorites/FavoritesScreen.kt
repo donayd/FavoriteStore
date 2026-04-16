@@ -23,6 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.dreammkr.favoritestore.R
+import com.dreammkr.favoritestore.presentation.common.AnimatedLoader
 import com.dreammkr.favoritestore.presentation.common.ProductItem
 
 @Composable
@@ -30,43 +31,82 @@ fun FavoritesScreen(
     onProductClick: (Int) -> Unit,
     viewModel: FavoritesViewModel = hiltViewModel()
 ) {
-    val favorites by viewModel.favoriteProducts.collectAsState()
+    val uiState by viewModel.uiState.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
-        if (favorites.isEmpty()) {
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.close),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(150.dp)
-                        .padding(bottom = 16.dp)
-                )
-                Text(
-                    text = stringResource(id = R.string.no_favorites),
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = MaterialTheme.colorScheme.secondary
-                )
+        when (val state = uiState) {
+            is FavoritesUiState.Loading -> {
+                AnimatedLoader(modifier = Modifier.align(Alignment.Center))
             }
-        } else {
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                contentPadding = PaddingValues(8.dp),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                items(favorites) { product ->
-                    ProductItem(
-                        product = product,
-                        onProductClick = { onProductClick(product.id) },
-                        onFavoriteClick = { viewModel.toggleFavorite(product) }
-                    )
+
+            is FavoritesUiState.Empty -> {
+                EmptyFavorites()
+            }
+
+            is FavoritesUiState.Error -> {
+                ErrorMessage(state.message)
+            }
+
+            is FavoritesUiState.Success -> {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    contentPadding = PaddingValues(8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items(state.products) { product ->
+                        ProductItem(
+                            product = product,
+                            onProductClick = { onProductClick(product.id) },
+                            onFavoriteClick = { viewModel.toggleFavorite(product) }
+                        )
+                    }
                 }
             }
         }
+    }
+}
+
+@Composable
+private fun EmptyFavorites() {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.close),
+            contentDescription = null,
+            modifier = Modifier
+                .size(150.dp)
+                .padding(bottom = 16.dp)
+        )
+        Text(
+            text = stringResource(id = R.string.no_favorites),
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.secondary
+        )
+    }
+}
+
+@Composable
+private fun ErrorMessage(message: String) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.door),
+            contentDescription = null,
+            modifier = Modifier
+                .size(150.dp)
+                .padding(bottom = 16.dp)
+        )
+        Text(
+            text = message,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.secondary
+        )
     }
 }

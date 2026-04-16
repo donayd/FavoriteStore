@@ -4,7 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dreammkr.favoritestore.domain.model.Product
-import com.dreammkr.favoritestore.domain.repository.ProductRepository
+import com.dreammkr.favoritestore.domain.use_case.GetProductByIdUseCase
+import com.dreammkr.favoritestore.domain.use_case.ToggleFavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +15,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ProductDetailViewModel @Inject constructor(
-    private val repository: ProductRepository,
+    private val getProductByIdUseCase: GetProductByIdUseCase,
+    private val toggleFavoriteUseCase: ToggleFavoriteUseCase,
     savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -30,7 +32,7 @@ class ProductDetailViewModel @Inject constructor(
     fun loadProduct() {
         viewModelScope.launch {
             _state.value = ProductDetailState.Loading
-            repository.getProductById(productId)
+            getProductByIdUseCase(productId)
                 .onSuccess { product ->
                     _state.value = ProductDetailState.Success(product)
                 }
@@ -45,7 +47,7 @@ class ProductDetailViewModel @Inject constructor(
         if (currentState is ProductDetailState.Success) {
             viewModelScope.launch {
                 val product = currentState.product
-                repository.toggleFavorite(product)
+                toggleFavoriteUseCase(product)
                 _state.value =
                     ProductDetailState.Success(product.copy(isFavorite = !product.isFavorite))
             }

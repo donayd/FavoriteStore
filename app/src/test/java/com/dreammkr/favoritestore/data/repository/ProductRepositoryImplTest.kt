@@ -1,12 +1,15 @@
 package com.dreammkr.favoritestore.data.repository
 
+import app.cash.turbine.test
 import com.dreammkr.favoritestore.data.local.ProductDao
 import com.dreammkr.favoritestore.data.remote.ApiService
 import com.dreammkr.favoritestore.data.remote.NameDto
 import com.dreammkr.favoritestore.data.remote.ProductDto
 import com.dreammkr.favoritestore.data.remote.UserDto
 import io.mockk.coEvery
+import io.mockk.every
 import io.mockk.mockk
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -30,14 +33,16 @@ class ProductRepositoryImplTest {
             ProductDto(1, "Title", 10.0, "Desc", "Cat", "Img")
         )
         coEvery { apiService.getProducts() } returns remoteProducts
-        coEvery { productDao.isFavorite(1) } returns true
+        every { productDao.getFavoriteIds() } returns flowOf(listOf(1))
 
-        val result = repository.getProducts()
-
-        assertTrue(result.isSuccess)
-        val products = result.getOrNull()
-        assertEquals(1, products?.size)
-        assertTrue(products!![0].isFavorite)
+        repository.getProducts().test {
+            val result = awaitItem()
+            assertTrue(result.isSuccess)
+            val products = result.getOrNull()
+            assertEquals(1, products?.size)
+            assertTrue(products!![0].isFavorite)
+            awaitComplete()
+        }
     }
 
     @Test
