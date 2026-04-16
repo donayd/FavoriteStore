@@ -1,7 +1,9 @@
-<h1 align="center">FavoriteStore</h1>
+<h1>
+<font size="6" align="center">Favorite Store</font>
+</h1>
 
 <p align="center">
-  <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-21%2B-green.svg?style=flat"/></a>
+  <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-24%2B-green.svg?style=flat"/></a>
   <a href="https://kotlinlang.org/"><img alt="Android" src="https://img.shields.io/badge/Android-Kotlin-purple.svg?style=flat"/></a>
   <a href="https://github.com/donayd"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Donayd-blue.svg?style=flat"/></a> 
 </p>
@@ -13,7 +15,7 @@
 <div align="left">
   <img src="./preview/preview.gif" align="right" width="320" style="border-radius: 20px; margin: 10px 0 20px 20px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);" />
 
-  <font size="4">🚀 <b>Características</b></font>
+  <font size="5">🚀 <b>Características</b></font>
   <ul>
     <li><b>Listado de Productos</b>: Grid moderno con carga asíncrona.</li>
     <li><b>Detalle de Producto</b>: Información, precio y categoría.</li>
@@ -25,7 +27,7 @@
 
   <br/>
 
-  <font size="4">🛠️ <b>Stack Tecnológico</b></font>
+  <font size="5">🛠️ <b>Stack Tecnológico</b></font>
   <ul>
     <li><b>UI</b>: Jetpack Compose con Material 3.</li>
     <li><b>Arquitectura</b>: MVVM + Clean Architecture.</li>
@@ -36,7 +38,7 @@
 
   <br/>
 
-  <font size="4">📐 <b>Arquitectura</b></font>
+  <font size="5">📐 <b>Arquitectura</b></font>
   <ul>
     <li><b>Data</b>: Repositorios, Retrofit y Room.</li>
     <li><b>Domain</b>: Modelos de negocio y lógica pura.</li>
