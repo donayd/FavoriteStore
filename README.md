@@ -6,54 +6,46 @@
   <a href="https://github.com/donayd"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Donayd-blue.svg?style=flat"/></a> 
 </p>
 
-**FavoriteStore** es una aplicación Android moderna desarrollada en Kotlin que utiliza la [FakeStoreAPI](https://fakestoreapi.com) para mostrar productos y gestionar una lista de favoritos persistente. La app sigue los principios de **Clean Architecture** y las mejores prácticas de desarrollo recomendadas por Google.
+**FavoriteStore** es una aplicación Android moderna desarrollada en Kotlin que utiliza la [FakeStoreAPI](https://fakestoreapi.com) para mostrar productos y gestionar una lista de favoritos persistente. La app sigue los principios de **Clean Architecture**.
 
 <br/>
 
-<table border="0">
-  <tr>
-    <td valign="top" style="border: none;">
-      <br/>
-      <img src="https://raw.githubusercontent.com/TarikSouto/TarikSouto/main/rocket.gif" width="20" /> <b><font size="5">Características</font></b>
-      <br/><br/>
-      <ul>
-        <li><b>Listado de Productos</b>: Visualización en grid moderno con carga asíncrona de imágenes.</li>
-        <li><b>Detalle de Producto</b>: Información detallada de cada artículo, precio y categoría.</li>
-        <li><b>Gestión de Favoritos</b>: Marcar/desmarcar con persistencia local en Room.</li>
-        <li><b>Perfil de Usuario</b>: Información obtenida de la API y estadísticas de favoritos.</li>
-        <li><b>Interfaz Adaptativa</b>: Soporte para pantallas mediante <code>NavigationSuiteScaffold</code>.</li>
-        <li><b>Modo Offline</b>: Los favoritos están disponibles sin conexión.</li>
-        <li><b>Animaciones</b>: Transiciones fluidas entre pestañas y estados de carga.</li>
-      </ul>
-      <br/>
-      <img src="https://raw.githubusercontent.com/TarikSouto/TarikSouto/main/gear.gif" width="20" /> <b><font size="5">Stack Tecnológico</font></b>
-      <br/><br/>
-      <ul>
-        <li><b>Lenguaje</b>: Kotlin con Coroutines y Flow.</li>
-        <li><b>UI</b>: Jetpack Compose con Material 3.</li>
-        <li><b>Arquitectura</b>: MVVM + Clean Architecture.</li>
-        <li><b>Inyección de Dependencias</b>: Hilt.</li>
-        <li><b>Red / Persistencia</b>: Retrofit + Room Database.</li>
-        <li><b>Imágenes</b>: Coil para carga eficiente.</li>
-        <li><b>Testing</b>: MockK, Turbine e Instrumentation tests.</li>
-      </ul>
-      <br/>
-      <img src="https://raw.githubusercontent.com/TarikSouto/TarikSouto/main/computer.gif" width="20" /> <b><font size="5">Arquitectura</font></b>
-      <br/><br/>
-      <ul>
-        <li><b>Data</b>: Implementación de repositorios, Retrofit (Remote) y Room (Local).</li>
-        <li><b>Domain</b>: Modelos de negocio y lógica pura (independiente de Android).</li>
-        <li><b>Presentation</b>: ViewModels y pantallas de Compose por funcionalidades.</li>
-      </ul>
-    </td>
-    <td valign="top" style="border: none; min-width: 330px;">
-      <br/><br/>
-      <img src="./preview/preview.gif" width="320" style="border-radius: 20px; box-shadow: 0px 4px 15px rgba(0,0,0,0.5);" />
-    </td>
-  </tr>
-</table>
+<div align="left">
+  <img src="./preview/preview.gif" align="right" width="320" style="border-radius: 20px; margin: 10px 0 20px 20px; box-shadow: 0px 4px 10px rgba(0,0,0,0.3);" />
 
-<br/>
+  <font size="4">🚀 <b>Características</b></font>
+  <ul>
+    <li><b>Listado de Productos</b>: Grid moderno con carga asíncrona.</li>
+    <li><b>Detalle de Producto</b>: Información, precio y categoría.</li>
+    <li><b>Gestión de Favoritos</b>: Persistencia local en Room.</li>
+    <li><b>Perfil de Usuario</b>: Estadísticas obtenidas de la API.</li>
+    <li><b>Interfaz Adaptativa</b>: Uso de <code>NavigationSuiteScaffold</code>.</li>
+    <li><b>Modo Offline</b>: Favoritos disponibles sin conexión.</li>
+  </ul>
+
+  <br/>
+
+  <font size="4">🛠️ <b>Stack Tecnológico</b></font>
+  <ul>
+    <li><b>UI</b>: Jetpack Compose con Material 3.</li>
+    <li><b>Arquitectura</b>: MVVM + Clean Architecture.</li>
+    <li><b>DI</b>: Hilt para inyección de dependencias.</li>
+    <li><b>Red / DB</b>: Retrofit + Room Database.</li>
+    <li><b>Testing</b>: MockK, Turbine e Instrumentation tests.</li>
+  </ul>
+
+  <br/>
+
+  <font size="4">📐 <b>Arquitectura</b></font>
+  <ul>
+    <li><b>Data</b>: Repositorios, Retrofit y Room.</li>
+    <li><b>Domain</b>: Modelos de negocio y lógica pura.</li>
+    <li><b>Presentation</b>: ViewModels y pantallas de Compose.</li>
+  </ul>
+
+</div>
+
+<br clear="right"/>
 
 ---
 Desarrollado por **Donayd Correa Marrugo**.
