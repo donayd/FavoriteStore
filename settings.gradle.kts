@@ -24,4 +24,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Favorite Store"
 include(":app")
- 
+include(":data")
+include(":domain")
+include(":ui")

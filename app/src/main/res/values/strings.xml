@@ -1,14 +1,3 @@
 <resources>
     <string name="app_name">Favorite Store</string>
-    <string name="products">Products</string>
-    <string name="favorites">Favorites</string>
-    <string name="profile">Profile</string>
-    <string name="product_detail">Detail</string>
-    <string name="description">Description</string>
-    <string name="no_favorites">No favorite products yet.</string>
-    <string name="favorite_products">FAVORITE PRODUCTS</string>
-    <string name="profile_picture">Profile Picture</string>
-    <string name="back">Back</string>
-    <string name="favorite">Favorite</string>
-    <string name="unknown_error">Unknown error</string>
 </resources>

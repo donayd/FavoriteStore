@@ -47,14 +47,14 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.dreammkr.favoritestore.presentation.detail.ProductDetailScreen
-import com.dreammkr.favoritestore.presentation.detail.ProductDetailState
-import com.dreammkr.favoritestore.presentation.detail.ProductDetailViewModel
-import com.dreammkr.favoritestore.presentation.favorites.FavoritesScreen
-import com.dreammkr.favoritestore.presentation.products.ProductListScreen
-import com.dreammkr.favoritestore.presentation.profile.ProfileScreen
-import com.dreammkr.favoritestore.presentation.theme.FavoriteStoreTheme
-import com.dreammkr.favoritestore.presentation.theme.Yellow
+import com.dreammkr.favoritestore.ui.detail.ProductDetailScreen
+import com.dreammkr.favoritestore.ui.detail.ProductDetailState
+import com.dreammkr.favoritestore.ui.detail.ProductDetailViewModel
+import com.dreammkr.favoritestore.ui.favorites.FavoritesScreen
+import com.dreammkr.favoritestore.ui.products.ProductListScreen
+import com.dreammkr.favoritestore.ui.profile.ProfileScreen
+import com.dreammkr.favoritestore.ui.theme.FavoriteStoreTheme
+import com.dreammkr.favoritestore.ui.theme.Yellow
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -95,9 +95,9 @@ fun MainScreen() {
         )
     )
 
-    val productsLabel = stringResource(id = R.string.products)
-    val favoritesLabel = stringResource(id = R.string.favorites)
-    val profileLabel = stringResource(id = R.string.profile)
+    val productsLabel = stringResource(id = com.dreammkr.favoritestore.ui.R.string.products)
+    val favoritesLabel = stringResource(id = com.dreammkr.favoritestore.ui.R.string.favorites)
+    val profileLabel = stringResource(id = com.dreammkr.favoritestore.ui.R.string.profile)
 
     val isDetailScreen = currentDestination?.route == "detail/{productId}"
     val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -142,8 +142,8 @@ fun MainScreen() {
                 TopAppBar(
                     title = {
                         Text(
-                            text = if (isDetailScreen) stringResource(id = R.string.product_detail)
-                            else stringResource(id = R.string.app_name),
+                            text = if (isDetailScreen) stringResource(id = com.dreammkr.favoritestore.ui.R.string.product_detail)
+                            else stringResource(id = com.dreammkr.favoritestore.ui.R.string.app_name),
                             color = Color.White
                         )
                     },
@@ -155,7 +155,7 @@ fun MainScreen() {
                             IconButton(onClick = { navController.popBackStack() }) {
                                 Icon(
                                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                    contentDescription = stringResource(id = R.string.back),
+                                    contentDescription = stringResource(id = com.dreammkr.favoritestore.ui.R.string.back),
                                     tint = Color.White
                                 )
                             }
@@ -172,7 +172,7 @@ fun MainScreen() {
                                 IconButton(onClick = { detailViewModel.toggleFavorite() }) {
                                     Icon(
                                         imageVector = if (product.isFavorite) Icons.Default.Star else Icons.Default.StarBorder,
-                                        contentDescription = stringResource(id = R.string.favorite),
+                                        contentDescription = stringResource(id = com.dreammkr.favoritestore.ui.R.string.favorite),
                                         tint = if (product.isFavorite) Yellow else Color.White
                                     )
                                 }
