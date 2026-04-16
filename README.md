@@ -1,6 +1,16 @@
-# FavoriteStore
+<h1 align="center">FavoriteStore</h1>
+
+<p align="center">
+  <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-green.svg?style=flat"/></a>
+  <a href="https://www.java.com/"><img alt="Android" src="https://img.shields.io/badge/Android-Java-orange.svg?style=flat"/></a>
+  <a href="https://github.com/donayd"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Donayd-blue.svg?style=flat"/></a> 
+</p>
 
 **FavoriteStore** es una aplicación Android moderna desarrollada en Kotlin que utiliza la [FakeStoreAPI](https://fakestoreapi.com) para mostrar productos y gestionar una lista de favoritos persistente. La app sigue los principios de **Clean Architecture** y las mejores prácticas de desarrollo recomendadas por Google.
+
+<div style="float:left;margin:0px 12px 0 12px">
+    <img src="/preview/preview.gif" align="right" width="320"/>
+</div>
 
 ## 🚀 Características
 
