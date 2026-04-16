@@ -1,8 +1,8 @@
 <h1 align="center">FavoriteStore</h1>
 
 <p align="center">
-  <a href="https://android-arsenal.com/api?level=21"><img alt="API" src="https://img.shields.io/badge/API-21%2B-green.svg?style=flat"/></a>
-  <a href="https://kotlinlang.org/"><img alt="Android" src="https://img.shields.io/badge/Android-Kotlin-purple.svg?style=flat&logo=kotlin"/></a>
+  <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-21%2B-green.svg?style=flat"/></a>
+  <a href="https://kotlinlang.org/"><img alt="Android" src="https://img.shields.io/badge/Android-Kotlin-purple.svg?style=flat"/></a>
   <a href="https://github.com/donayd"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-Donayd-blue.svg?style=flat"/></a> 
 </p>
 
