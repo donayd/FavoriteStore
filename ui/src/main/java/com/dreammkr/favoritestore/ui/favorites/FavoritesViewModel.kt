@@ -6,11 +6,13 @@ import com.dreammkr.favoritestore.domain.model.Product
 import com.dreammkr.favoritestore.domain.use_case.GetFavoriteProductsUseCase
 import com.dreammkr.favoritestore.domain.use_case.ToggleFavoriteUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -37,10 +39,19 @@ class FavoritesViewModel @Inject constructor(
             initialValue = FavoritesUiState.Loading
         )
 
+    private val _eventChannel = Channel<UiEvent>()
+    val events = _eventChannel.receiveAsFlow()
+
     fun toggleFavorite(product: Product) {
         viewModelScope.launch {
-            toggleFavoriteUseCase(product)
+            toggleFavoriteUseCase(product).onFailure {
+                _eventChannel.send(UiEvent.ShowError("Error updating favorite status"))
+            }
         }
+    }
+
+    sealed class UiEvent {
+        data class ShowError(val message: String) : UiEvent()
     }
 }
 
